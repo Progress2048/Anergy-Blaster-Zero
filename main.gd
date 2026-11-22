@@ -7,6 +7,8 @@ func game_over() -> void:
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
+	$BackgroundMusic.stop()
+	$GameOverSound.play()
 	
 func new_game():
 	get_tree().call_group("mobs", "queue_free")
@@ -15,6 +17,7 @@ func new_game():
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
+	$BackgroundMusic.play()
 
 func _on_mob_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.
